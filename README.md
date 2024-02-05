@@ -34,6 +34,9 @@ php bin/magento setup:upgrade
 - Click `Add New Currency`
 - Fill data and save
 
+
+![Magento 2 Custom Currency](https://raw.githubusercontent.com/torys877/magento-custom-currency/main/docs/add_currency.png)
+
 ## Author
 
 ### Ihor Oleksiienko
