@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ihor Oleksiienko (https://github.com/torys877)
+  ~ See LICENSE for license details.
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Crypto_Currency::css/custom-currency.css"/>
+        <css src="Crypto_Currency::css/cryptofont.min.css"/>
+    </head>
+
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="custom-currency-bootstrap" template="Crypto_Currency::bootstrap.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

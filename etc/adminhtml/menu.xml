@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ihor Oleksiienko (https://github.com/torys877)
+  ~ See LICENSE for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Crypto_Currency::crypto" title="Crypto" translate="title" module="Crypto_Currency" sortOrder="35" parent="Magento_Backend::stores" resource="Crypto_Currency::crypto" />
+        <add id="Crypto_Currency::currencies" title="Custom Currencies" module="Crypto_Currency" sortOrder="10" parent="Crypto_Currency::crypto" action="customcurrency/currency" resource="Crypto_Currency::currencies"/>
+    </menu>
+</config>

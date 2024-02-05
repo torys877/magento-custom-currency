@@ -1,0 +1,20 @@
+{
+    "crypto_custom_currency": {
+        "column": {
+            "code": true,
+            "precision": true,
+            "format_precision": true,
+            "name": true,
+            "plural": true,
+            "format": true,
+            "format_html": true,
+            "symbol": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CODE_UNIQUE_INDEX": true
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ihor Oleksiienko (https://github.com/torys877)
+  ~ See LICENSE for license details.
+  -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="crypto_custom_currency" resource="default" engine="innodb" comment="Custom Currency Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column xsi:type="int" name="status" nullable="false" comment="Status"/>
+        <column xsi:type="varchar" name="code" length="255" nullable="false" comment="Code"/>
+        <column xsi:type="smallint" name="precision" nullable="false" comment="Precision"/>
+        <column xsi:type="varchar" name="format_precision" length="255" nullable="false" comment="Format Precision"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Single Name"/>
+        <column xsi:type="varchar" name="plural" length="255" nullable="false" comment="Plural Name"/>
+        <column xsi:type="varchar" name="format" length="255" nullable="false" comment="Format"/>
+        <column xsi:type="text" name="format_html" nullable="false" comment="Format Html"/>
+        <column xsi:type="varchar" name="symbol" length="255" nullable="false" comment="Symbol"/>
+        <column xsi:type="varchar" name="symbol_html" length="255" nullable="false" comment="Symbol Html"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CODE_UNIQUE_INDEX">
+            <column name="code"/>
+        </constraint>
+    </table>
+</schema>

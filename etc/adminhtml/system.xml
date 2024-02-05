@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ihor Oleksiienko (https://github.com/torys877)
+  ~ See LICENSE for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="crypto" translate="label" sortOrder="350">
+            <label>Crypto</label>
+        </tab>
+        <section id="customcurrency" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Custom Currency</label>
+            <tab>crypto</tab>
+            <resource>Crypto_Currency::main</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="htmlblocks" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable HTML output for currency in blocks:</label>
+                    <comment>
+<![CDATA[<pre>
+\Magento\LayeredNavigation\Block\Navigation
+\Magento\Checkout\Block\Cart\Grid
+</pre>]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

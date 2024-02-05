@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ihor Oleksiienko (https://github.com/torys877)
+  ~ See LICENSE for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Crypto\Currency\Api\Data\CurrencyInterface"
+                type="Crypto\Currency\Model\Data\Currency"/>
+    <preference for="Crypto\Currency\Api\CurrencyRepositoryInterface"
+                type="Crypto\Currency\Model\CurrencyRepository"/>
+
+    <type name="Magento\Framework\Locale\Config">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\LocaleConfigPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Framework\App\Config">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\ConfigPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Framework\CurrencyInterface">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\FrameworkCurrencyInterfacePlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Framework\Locale\FormatInterface">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\FrameworkLocaleFormatPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Framework\Pricing\Render\AmountRenderInterface">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\FrameworkPricingRenderAmountPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Framework\Pricing\PriceCurrencyInterface">
+        <plugin name="Crypto_Currency_PriceCurrencyInterface" type="Crypto\Currency\Plugin\PriceCurrencyInterfacePlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\CatalogProductViewPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\ConfigurableProductProductViewTypeConfigurablePlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Swatches\Block\Product\Renderer\Listing\Configurable">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\SwatchesProductRendererListingConfigurablePlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="Crypto_Currency" type="Crypto\Currency\Plugin\CheckoutDefaultConfigProviderPlugin" sortOrder="999"/>
+    </type>
+
+    <type name="Magento\Checkout\Block\Cart\Grid">
+        <plugin name="html-currency-in-cart" type="Crypto\Currency\Plugin\CheckoutBlockCartGridPlugin" sortOrder="999"/>
+    </type>
+    <type name="Magento\Directory\Model\Currency">
+        <plugin name="Crypto_Currency::currency_format_precision"
+                type="Crypto\Currency\Plugin\Precision\Directory\Currency"
+                sortOrder="1" />
+    </type>
+
+    <type name="Crypto\Currency\UI\Component\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Crypto\Currency\Model\ResourceModel\Currency\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">RefGridFilterPool</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="RefGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customcurrency_currency_listing_data_source" xsi:type="string">Crypto\Currency\Model\ResourceModel\Currency\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Crypto\Currency\Model\ResourceModel\Currency\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">crypto_custom_currency</argument>
+        </arguments>
+    </virtualType>
+
+</config>
